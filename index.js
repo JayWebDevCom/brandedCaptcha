@@ -24,6 +24,8 @@ app.post('/anthony', function(req, res){
   console.log(req.body.text)
   if (req.body.text == require('./js/passphrase')) {
     return res.redirect('/confirmed')
+  }else{
+    return res.redirect('/')
   }
 })
 
