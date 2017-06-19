@@ -19,7 +19,7 @@ describe('feature testing', function(){
     browser.visit('http://localhost:8080/').then(function(){
       browser.fill('text', 'jaiye')
       browser.pressButton('submit').then(function() {
-        browser.assert.text('h1', 'You are a robot')
+        browser.assert.text('h1', 'You are a Robot')
       }).then(done, done)
     })
   })

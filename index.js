@@ -16,9 +16,9 @@ app.listen(8080, function(){
 })
 
 app.set('view engine', 'ejs')
-app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/images'));
 
-var ourImage = './images/picOne.jpg'
+var ourImage = './picOne.jpg'
 
 app.get('/', function(req, res){
   res.render('index', {
@@ -32,9 +32,7 @@ app.post('/anthony', function(req, res){
     req.session.authenticate = true
     return res.redirect('/confirmed')
   }else{
-    return res.redirect('/')
-  }
-  else{ res.redirect('/failed')
+    return res.redirect('/failed')
   }
 })
 
