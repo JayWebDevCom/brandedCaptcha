@@ -1,4 +1,4 @@
-var passphrase = require('../js/passphrase.js')
+var passphrase = require('../assets/passphrase.js')
 
 describe('passphrase', function(){
 
