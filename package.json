@@ -18,13 +18,22 @@
   },
   "homepage": "https://github.com/adamjohnsnow/branded_captcha#readme",
   "dependencies": {
+    "assert": "^1.4.1",
     "body-parser": "^1.17.2",
+    "chai": "^4.0.2",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "http-server": "^0.10.0",
     "mongodb": "^2.2.29",
     "mongoose": "^4.10.7",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "jasmine": "^2.6.0",
+    "mocha": "^3.4.2",
+    "nodemon": "^1.11.0",
+    "zombie": "^5.0.5"
+  },
+  "devDependencies": {
+    "jasmine-spec-reporter": "^4.1.0"
   }
 }
