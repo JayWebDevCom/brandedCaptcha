@@ -31,10 +31,13 @@ app.get('/', function(req, res){
   })
 })
 
-var myArray = require('./assets/minigame3')
+
 app.get('/minigame3', function(req, res){
+  var Images = require('./assets/minigame3')
+  var images = new Images
   res.render('minigame3', {
-    mainImage: myArray[0]
+    mainImage: images.mainImage,
+    testImages: images.testImages
   });
 });
 
