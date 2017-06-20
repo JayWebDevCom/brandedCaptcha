@@ -15,7 +15,7 @@ describe('minigame3', function(){
     browser.assert.element('img#mainImage')
   })
 
-  it('should display 3 images on the page with id testImage', function(){
+  it('should display 3 images on the page with class testImage', function(){
     browser.assert.success()
     browser.assert.elements('img.testImage', 3)
   });
