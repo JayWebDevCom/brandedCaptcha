@@ -19,7 +19,6 @@ app.listen(8080, function(){
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/images'));
 
-
 app.get('/', function(req, res){
   var getImage = require('./assets/passphrase')
   getImage = getImage();
