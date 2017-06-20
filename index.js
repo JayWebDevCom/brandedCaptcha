@@ -2,11 +2,7 @@ var express = require('express');
 var bodyparser = require('body-parser')
 var app = express();
 var session = require('express-session');
-// var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost:27017/captcha_dev');
-//
-// var db = mongoose.connection;
-
+var getAnswer = require('./assets/antworten')
 
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
@@ -23,14 +19,16 @@ app.listen(8080, function(){
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/images'));
 
-var ourImage = './picOne.jpg'
 
 app.get('/', function(req, res){
+  var getImage = require('./assets/passphrase')
+  getImage = getImage();
+  var ourImage = './' + getImage[0]
+  req.session.ourNumber = getImage[1]
   res.render('index', {
     ourImage: ourImage
   })
 })
-
 
 app.get('/minigame3', function(req, res){
   var Images = require('./assets/minigame3')
@@ -41,16 +39,9 @@ app.get('/minigame3', function(req, res){
   });
 });
 
-// app.get('/db', function(req, res){
-//   db.on('error', console.error.bind(console, 'connection error: '));
-//   db.once('open', function(){
-//     res.send('We are connected!');
-//   });
-// });
-
 app.post('/anthony', function(req, res){
   console.log(req.body.text)
-  if (req.body.text == require('./assets/passphrase')) {
+  if (getAnswer(req.body.text, req.session.ourNumber)) {
     req.session.authenticate = true
     return res.redirect('/confirmed')
   }else{
