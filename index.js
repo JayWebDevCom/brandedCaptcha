@@ -23,7 +23,7 @@ app.listen(8080, function(){
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/images'));
 
-var ourImage = './picOne.jpg'
+var ourImage = './IMG_0773.jpg'
 
 app.get('/', function(req, res){
   res.render('index', {
