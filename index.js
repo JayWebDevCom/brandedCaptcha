@@ -2,10 +2,10 @@ var express = require('express');
 var bodyparser = require('body-parser')
 var app = express();
 var session = require('express-session');
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/captcha_dev');
-
-var db = mongoose.connection;
+// var mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost:27017/captcha_dev');
+//
+// var db = mongoose.connection;
 
 
 app.use(bodyparser.urlencoded({extended: false}));
@@ -31,12 +31,19 @@ app.get('/', function(req, res){
   })
 })
 
-app.get('/db', function(req, res){
-  db.on('error', console.error.bind(console, 'connection error: '));
-  db.once('open', function(){
-    res.send('We are connected!');
+var myArray = require('./assets/minigame3')
+app.get('/minigame3', function(req, res){
+  res.render('minigame3', {
+    mainImage: myArray[0]
   });
 });
+
+// app.get('/db', function(req, res){
+//   db.on('error', console.error.bind(console, 'connection error: '));
+//   db.once('open', function(){
+//     res.send('We are connected!');
+//   });
+// });
 
 app.post('/anthony', function(req, res){
   console.log(req.body.text)

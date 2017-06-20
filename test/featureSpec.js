@@ -23,5 +23,4 @@ describe('feature testing', function(){
       }).then(done, done)
     })
   })
-
 })

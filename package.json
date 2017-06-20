@@ -4,7 +4,8 @@
   "description": "group project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
+    "start": "nodemon",
     "go": "node node_modules/http-server/bin/http-server"
   },
   "repository": {
@@ -25,11 +26,10 @@
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "http-server": "^0.10.0",
-    "mongodb": "^2.2.29",
-    "mongoose": "^4.10.7",
-    "nodemon": "^1.11.0",
     "jasmine": "^2.6.0",
     "mocha": "^3.4.2",
+    "mongodb": "^2.2.29",
+    "mongoose": "^4.10.7",
     "nodemon": "^1.11.0",
     "zombie": "^5.0.5"
   },
