@@ -2,6 +2,7 @@ var express = require('express');
 var bodyparser = require('body-parser')
 var app = express();
 var session = require('express-session');
+var getAnswer = require('./assets/antworten')
 
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
@@ -18,9 +19,12 @@ app.listen(8080, function(){
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/images'));
 
-var ourImage = './picOne.jpg'
 
 app.get('/', function(req, res){
+  var getImage = require('./assets/passphrase')
+  getImage = getImage();
+  var ourImage = './' + getImage[0]
+  req.session.ourNumber = getImage[1]
   res.render('index', {
     ourImage: ourImage
   })
@@ -28,7 +32,7 @@ app.get('/', function(req, res){
 
 app.post('/anthony', function(req, res){
   console.log(req.body.text)
-  if (req.body.text == require('./assets/passphrase')) {
+  if (getAnswer(req.body.text, req.session.ourNumber)) {
     req.session.authenticate = true
     return res.redirect('/confirmed')
   }else{
