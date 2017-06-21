@@ -1,5 +1,5 @@
 var Minigames = require('../assets/minigames.js')
-var Minigame1 = require('../assets/passphrase.js')
+var Minigame1 = require('../assets/minigame1.js')
 
 describe('minigames', function(){
 
@@ -11,7 +11,6 @@ describe('minigames', function(){
   it('can return a minigame from an array', function(){
     var minigames = new Minigames(0);
     var minigame1 = minigames.getGame();
-    console.log(minigame1)
     expect(minigame1 instanceof Minigame1).toBeTruthy();
   });
 })

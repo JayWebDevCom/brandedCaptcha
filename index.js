@@ -3,7 +3,8 @@ var bodyparser = require('body-parser')
 var app = express();
 var session = require('express-session');
 var getAnswer = require('./assets/antworten')
-var getImage = require('./assets/passphrase')
+var getImage = require('./assets/minigame1')
+var Minigames = require('./assets/minigames')
 
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
@@ -25,9 +26,12 @@ app.get('/', function(req, res){
 });
 
 app.get('/minigame', function(req, res){
-  var captcha = new Minigame
-  })
-})
+  var captcha = new Minigames().getGame()
+  res.send(captcha)
+    req.session.captcha = captcha
+    console.log(req.session.captcha)
+    req.session.solution = captcha.solution
+});
 
 app.post('/minigame', function(req, res){
   console.log(req.body.text)

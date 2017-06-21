@@ -1,13 +1,37 @@
-var mainImages = ['./mainImage/cisse.jpg']
-var responseImages = ['./responseImage/boots.jpg']
-var testImages = ['./testImage/duck.png', './testImage/mug.jpg']
+var mains = [{id:300, img:'cisse'}, {id:301, img:'ronaldo'}, {id:302, img:'murray'}, {id:303, img:'rangeRover'}, {id:304, img:'lufthansaPlane'}]
+var solutions = [{id:300, img:'adidasBoots'}, {id:301, img:'nikeBoots'}, {id:302, img:'headRacket'}, {id:303, img:'rangeRoverCar'}, {id:304, img:'lufthansLogo'}]
+var decoys = [{id:000, img:'dog'}, {id:001, img:'duck'}, {id:002, img:'mug'}, {id:003, img:'pen'}, {id:004, img:'plate'}]
 
-var Images = function(){
+//
 
-  this.mainImage = mainImages[0]
-  this.testImages = [responseImages[0],
-                    testImages[Math.floor(Math.random()*testImages.length)],
-                    testImages[Math.floor(Math.random()*testImages.length)]]
+var imgAssoc = function(){
+
+  this.randomIndex = Math.floor(Math.random() * mains.length)
+  //
+  this.mainImage = this.getMainImage(this.randomIndex)
+  this.mainImgString = this.buildMainImageString(this.mainImage)
+  //
+  this.promptArray = null
+  this.solution = null
+
 };
 
-  module.exports = Images;
+imgAssoc.prototype.getMainImage = function(index){
+  return mains[index]
+};
+
+imgAssoc.prototype.buildMainImageString = function(mainImage){
+  return './' + mainImage.img + '.jpg'
+};
+
+imgAssoc.prototype.getSolution = function(mainImageid){
+
+  function findSolution(hash) {
+    return hash.id === mainImageid;
+  };
+
+  return solutions.find(findSolution);
+
+};
+
+module.exports = imgAssoc;
