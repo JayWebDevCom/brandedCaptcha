@@ -3,7 +3,8 @@ var bodyparser = require('body-parser')
 var app = express();
 var session = require('express-session');
 var getAnswer = require('./assets/antworten')
-var getImage = require('./assets/passphrase')
+var getImage = require('./assets/minigame1')
+var Minigames = require('./assets/minigames')
 
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
@@ -20,18 +21,20 @@ app.listen(8080, function(){
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/images'));
 
-
 app.get('/', function(req, res){
-  getImage = require('./assets/passphrase')
-  getImage = getImage();
-  var ourImage = './' + getImage[0]
-  req.session.ourNumber = getImage[1]
-  res.render('index', {
-    ourImage: ourImage
-  })
-})
+    res.redirect('/minigame')
+});
 
-app.post('/anthony', function(req, res){
+app.get('/minigame', function(req, res){
+  var captcha = new Minigames().getGame()
+  res.send(captcha)
+    req.session.captcha = captcha
+    console.log(req.session.captcha)
+    req.session.solution = captcha.solution
+});
+
+app.post('/minigame', function(req, res){
+  console.log(req.body.text)
   if (getAnswer(req.body.text, req.session.ourNumber)) {
     req.session.authenticate = true
     return res.redirect('/confirmed')
@@ -39,6 +42,15 @@ app.post('/anthony', function(req, res){
     return res.redirect('/failed')
   }
 })
+
+app.get('/minigame3', function(req, res){
+  var Images = require('./assets/minigame3')
+  var images = new Images
+  res.render('minigame3', {
+    mainImage: images.mainImage,
+    testImages: images.testImages
+  });
+});
 
 app.get('/confirmed', function(req, res){
   if (req.session.authenticate){res.render('confirmed')}
