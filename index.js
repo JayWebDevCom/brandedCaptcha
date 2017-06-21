@@ -44,11 +44,11 @@ app.post('/minigame', function(req, res){
 })
 
 app.get('/minigame3', function(req, res){
-  var Images = require('./assets/minigame3')
-  var images = new Images
+  var ImgAssoc = require('./assets/minigame3')
+  var captcha = new ImgAssoc
   res.render('minigame3', {
-    mainImage: images.mainImage,
-    testImages: images.testImages
+    mainImageString: captcha.mainImageString,
+    promptArray: captcha.promptStrings,
   });
 });
 
