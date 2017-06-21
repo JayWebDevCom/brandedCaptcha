@@ -3,6 +3,7 @@ var bodyparser = require('body-parser')
 var app = express();
 var session = require('express-session');
 var getAnswer = require('./assets/antworten')
+var getImage = require('./assets/passphrase')
 
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
@@ -25,13 +26,6 @@ app.get('/', function(req, res){
 
 app.get('/minigame', function(req, res){
   var captcha = new Minigame
-
-  var getImage = require('./assets/passphrase')
-  getImage = getImage();
-  var ourImage = './' + getImage[0]
-  req.session.ourNumber = getImage[1]
-  res.render('index', {
-    ourImage: ourImage
   })
 })
 

@@ -31,6 +31,7 @@
     "mongodb": "^2.2.29",
     "mongoose": "^4.10.7",
     "nodemon": "^1.11.0",
+    "sinon": "^2.3.5",
     "zombie": "^5.0.5"
   },
   "devDependencies": {
