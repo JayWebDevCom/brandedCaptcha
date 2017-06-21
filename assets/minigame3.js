@@ -11,7 +11,7 @@ var imgAssoc = function(){
   this.mainImage = this.getMainImage(this.randomIndex)
   this.mainImgString = this.buildMainImageString(this.mainImage)
   //
-  this.promptArray = null
+  this.promptArray = this.getPromptArray(this.mainImage.id)
   this.solution = null
 
 };
@@ -32,6 +32,16 @@ imgAssoc.prototype.getSolution = function(mainImageid){
 
   return solutions.find(findSolution);
 
+};
+
+imgAssoc.prototype.getPromptArray = function(mainImageid){
+  var promptArr = [];
+  var randDecoyElemOne = decoys[Math.floor(Math.random() * decoys.length)];
+  var randDecoyElemTwo = decoys[Math.floor(Math.random() * decoys.length)];
+  promptArr.push(randDecoyElemOne);
+  promptArr.push(randDecoyElemTwo);
+  promptArr.push(this.getSolution(mainImageid)).;
+  return promptArr;
 };
 
 module.exports = imgAssoc;

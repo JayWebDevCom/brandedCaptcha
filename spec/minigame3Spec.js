@@ -19,4 +19,10 @@ describe('imgAssoc', function(){
     expect(captcha.getSolution(mainImage.id)).toEqual({id:300, img:'adidasBoots'});
   });
 
+  it('returns a prompt array', function(){
+    var captcha = new imgAssoc();
+    mainImage = {id:300, img:'cisse'}
+    captcha.getPromptArray(mainImage.id)
+    expect(captcha.promptArray.length).toEqual(3)
+  })
 })
