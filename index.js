@@ -20,6 +20,12 @@ app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/images'));
 
 app.get('/', function(req, res){
+    res.redirect('/minigame')
+});
+
+app.get('/minigame', function(req, res){
+  var captcha = new Minigame
+
   var getImage = require('./assets/passphrase')
   getImage = getImage();
   var ourImage = './' + getImage[0]
@@ -27,6 +33,16 @@ app.get('/', function(req, res){
   res.render('index', {
     ourImage: ourImage
   })
+})
+
+app.post('/minigame', function(req, res){
+  console.log(req.body.text)
+  if (getAnswer(req.body.text, req.session.ourNumber)) {
+    req.session.authenticate = true
+    return res.redirect('/confirmed')
+  }else{
+    return res.redirect('/failed')
+  }
 })
 
 app.get('/minigame3', function(req, res){
@@ -37,16 +53,6 @@ app.get('/minigame3', function(req, res){
     testImages: images.testImages
   });
 });
-
-app.post('/anthony', function(req, res){
-  console.log(req.body.text)
-  if (getAnswer(req.body.text, req.session.ourNumber)) {
-    req.session.authenticate = true
-    return res.redirect('/confirmed')
-  }else{
-    return res.redirect('/failed')
-  }
-})
 
 app.get('/confirmed', function(req, res){
   if (req.session.authenticate){res.render('confirmed')}

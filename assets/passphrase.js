@@ -7,8 +7,11 @@ var imageArray = [
   "IMG_0778.jpg",
   "IMG_0779.jpg"
 ]
-var randImage = function(number){
+
+
+var Minigame1  = function(number){
   var imageIndex = number || Math.floor(Math.random() * imageArray.length)
   return [imageArray[imageIndex], imageIndex]
 }
-module.exports = randImage;
+
+module.exports = Minigame1;
