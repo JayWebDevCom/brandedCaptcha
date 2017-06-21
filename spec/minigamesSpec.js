@@ -1,5 +1,5 @@
 var Minigames = require('../assets/minigames.js')
-var Minigame1 = require('../assets/minigame1.js')
+var Minigame3 = require('../assets/minigame3.js')
 
 describe('minigames', function(){
 
@@ -9,8 +9,8 @@ describe('minigames', function(){
   })
 
   it('can return a minigame from an array', function(){
-    var minigames = new Minigames(0);
-    var minigame1 = minigames.getGame();
-    expect(minigame1 instanceof Minigame1).toBeTruthy();
+    var minigames = new Minigames(1);
+    var minigame3 = minigames.getGame();
+    expect(minigame3 instanceof Minigame3).toBeTruthy();
   });
 })
