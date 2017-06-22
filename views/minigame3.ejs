@@ -5,16 +5,13 @@
     <title></title>
   </head>
   <body>
-    <img src="<%= mainImageString %>" id="mainImage" width='600' border=1pt>
+    <img src="<%= gameData.mainString %>" id="mainImage" width='600' border=1pt>
     <div id="testImages">
-      <img src="<%= promptStrings[0]%>" id="testImage1" class="testImage" width='200'>
-      <img src="<%= promptStrings[1]%>" id="testImage2" class="testImage" width='200'>
-      <img src="<%= promptStrings[2]%>" id="testImage3" class="testImage" width='200'>
+      <form action='/minigame3' method='post'>
+        <input type="image" src="<%= gameData.promptStrings[0]%>" id="0" class="testImage" width='200' value="0" name="promptImage">
+        <input type="image" src="<%= gameData.promptStrings[1]%>" id="1" class="testImage" width='200' value="1" name="promptImage">
+        <input type="image" src="<%= gameData.promptStrings[2]%>" id="2" class="testImage" width='200' value="2" name="promptImage">
+      </form>
     <div id="testImages">
-    <form id="form" action="/minigame" method="post">
-    <label for="text"></label><br>
-    <input type="text" name="text" placeholder="Type word in image">
-    <input type="submit" name="submit"></input>
-    </form>
   </body>
 </html>

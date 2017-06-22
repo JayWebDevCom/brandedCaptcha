@@ -7,13 +7,17 @@ var decoys = [{id:000, img:'dog'}, {id:001, img:'duck'}, {id:002, img:'mug'}, {i
 var imgAssoc = function(){
   this.type = 3
   this.randomIndex = Math.floor(Math.random() * mains.length)
+
+  this.promptArray = this.getPromptArray(this.getMainImage(this.randomIndex).id);
+  this.promptStrings = this.buildPromptStrings(this.promptArray);
+
   this.gameData = {
     mainId: this.getMainImage(this.randomIndex).id,
     mainString: this.buildMainImageString(this.getMainImage(this.randomIndex)),
-    promptArray: this.getPromptArray(this.getMainImage(this.randomIndex).id),
-    promptStrings: this.buildPromptStrings(this.getPromptArray(this.getMainImage(this.randomIndex).id)),
+    promptArray: this.promptArray,
+    promptStrings: this.promptStrings,
     solution: this.getSolution(this.getMainImage(this.randomIndex).id)
-  }
+  };
 };
 
 imgAssoc.prototype.getGameData = function () {
@@ -67,5 +71,13 @@ imgAssoc.prototype.buildPromptStrings = function(array){
   });
   return promptStrings
 };
+
+imgAssoc.prototype.checkAnswer = function(mainImageId, index, promptArray){
+  return mainImageId === promptArray[index].id
+}
+
+imgAssoc.prototype.testFunction = function(index){
+  console.log('this is a test')
+}
 
 module.exports = imgAssoc;
