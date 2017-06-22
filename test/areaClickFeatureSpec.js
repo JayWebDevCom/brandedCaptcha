@@ -1,14 +1,13 @@
+var $ = require('jquery')
 const Browser = require('zombie');
 var expect = require('chai').expect
 var assert = require('assert');
 var sinon = require('sinon');
-var app = require('../index.js')
+var app = require('../index.js');
 
 describe('areaClick feature testing', function(){
   const browser = new Browser();
   var stubRandom = sinon.stub(Math, 'random').returns(0.7);
-  var mouseClick = new MouseEvent('click', { clientX: 520, clientY: 180 })
-
   it('goes to index, gets redirected to miniGame', function(done){
     browser.visit('http://localhost:8080/').then(function(){
       browser.assert.url('http://localhost:8080/minigame');
@@ -23,10 +22,11 @@ describe('areaClick feature testing', function(){
 
   it('clicks on the logo', function(done){
     browser.visit('http://localhost:8080/').then(function(){
-      mouseClick().then(function(){
-        browser.assert.text('h2', 'Correct');
+      browser.click('#logoArea', function(){
+        browser.assert.text('h1', 'You are a Robot');
         stubRandom.restore();
-      }).then(done)
+        done();
+      })
     })
   })
 })
