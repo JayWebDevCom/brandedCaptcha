@@ -45,13 +45,34 @@ app.post('/minigame', function(req, res){
 })
 
 app.get('/minigame3', function(req, res){
-  var Images = require('./assets/minigame3')
-  var images = new Images
+  var ImgAssoc = require('./assets/minigame3')
+  var captcha = new ImgAssoc
+
+  req.session.promptArray = captcha.gameData.promptArray
+  req.session.mainImageId = captcha.gameData.mainId
+
   res.render('minigame3', {
-    mainImage: images.mainImage,
-    testImages: images.testImages
+    gameData: captcha.gameData
   });
 });
+
+app.post('/minigame3', function(req, res){
+  var ImgAssoc = require('./assets/minigame3')
+  var captcha = new ImgAssoc
+
+  var mainImageId = req.session.mainImageId
+  var promptArray = req.session.promptArray
+  var index = req.body.promptImage
+
+
+  if (captcha.checkAnswer(mainImageId, index, promptArray)) {
+    req.session.authenticate = true
+    return res.redirect('/confirmed')
+  }else{
+    req.session.authenticate = false
+    return res.redirect('/failed')
+  }
+})
 
 app.get('/confirmed', function(req, res){
   if (req.session.authenticate){res.render('confirmed')}

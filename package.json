@@ -4,7 +4,7 @@
   "description": "group project",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "jasmine",
     "start": "nodemon",
     "go": "node node_modules/http-server/bin/http-server"
   },
