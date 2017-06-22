@@ -11,11 +11,11 @@ describe('Clicking on an Area minigame', function(){
     expect(miniGame.gamekey).toEqual(201);
   })
   it('accepts correct solution', function(){
-    expect(miniGame.getSolution([201, '520,180'])).toBeTruthy();
+    expect(miniGame.getSolution([201, { x: 520, y: 130}])).toBeTruthy();
   })
 
 
   it('does not accept incorrect solution', function(){
-    expect(miniGame.getSolution([201, '128,245'])).not.toBeTruthy();
+    expect(miniGame.getSolution([201, { x: 50, y: 730}])).not.toBeTruthy();
   })
 })
