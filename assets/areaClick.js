@@ -1,5 +1,5 @@
-var mains = [{ id:202, img:'google.jpg', prompt: 'Click the Orange Letter' }, { id:201, img:'CocaCola.jpg', prompt: 'Click the Coke Label' }]
-var solutions = [{ id:201, xLowLimit: 517, xHighLimit: 577, yLowLimit: 78, yHighLimit: 153 }, { id: 202, xLowLimit: 205, xHighLimit: 404, yLowLimit: 102, yHighLimit: 218 }]
+var mains = [{ id:202, img:'google.jpg', prompt: 'Click the Orange Letter' }, { id:201, img:'CocaCola.jpg', prompt: 'Click the Coke Label' }, { id: 203, img: 'jordan_dunk.jpg', prompt: 'Click on Michael Jordan\'s Armband'}]
+var solutions = [{ id:201, xLowLimit: 517, xHighLimit: 577, yLowLimit: 78, yHighLimit: 153 }, { id: 202, xLowLimit: 205, xHighLimit: 404, yLowLimit: 102, yHighLimit: 218 }, { id: 203, xLowLimit: 438, xHighLimit: 491, yLowLimit: 299, yHighLimit: 354 }]
 
 var ClickArea = function(stubNumber){
   var randomIndex = stubNumber || Math.floor(Math.random() * mains.length)
