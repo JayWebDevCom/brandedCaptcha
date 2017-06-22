@@ -23,7 +23,6 @@ describe('areaClick feature testing', function(){
     browser.visit('http://localhost:8080/').then(function(){
       browser.click('#logoArea', function(){
         browser.assert.text('h1', 'You are a Robot');
-        stubRandom.restore();
         done();
       })
     })
