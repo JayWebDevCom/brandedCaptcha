@@ -3,7 +3,7 @@ var expect = require('chai').expect
 var assert = require('assert');
 var sinon = require('sinon');
 var app = require('../index.js')
-var passphrase = require('../assets/passphrase.js')
+var passphrase = require('../assets/minigame1.js')
 
 describe('feature testing', function(){
   const browser = new Browser();
@@ -23,6 +23,7 @@ describe('feature testing', function(){
       browser.fill('text', 'jaiye')
       browser.pressButton('submit').then(function() {
         browser.assert.text('h1', 'Confirmed!')
+        sinon.stub(Math, 'random').restore();
       }).then(done, done)
     })
   })
