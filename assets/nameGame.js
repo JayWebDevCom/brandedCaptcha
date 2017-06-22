@@ -9,9 +9,9 @@ var imageArray = [
 ]
 
 
-var Minigame1  = function(number){
+var NameGame  = function(number){
   var imageIndex = number || Math.floor(Math.random() * imageArray.length)
   return [imageArray[imageIndex], imageIndex]
 }
 
-module.exports = Minigame1;
+module.exports = NameGame;

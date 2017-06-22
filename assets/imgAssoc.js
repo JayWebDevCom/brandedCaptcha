@@ -2,8 +2,6 @@ var mains = [{id:300, img:'cisse'}, {id:301, img:'ronaldo'}, {id:302, img:'murra
 var solutions = [{id:300, img:'adidasBoots'}, {id:301, img:'nikeBoots'}, {id:302, img:'headRacket'}, {id:303, img:'rangeRoverCar'}, {id:304, img:'lufthansaLogo'}]
 var decoys = [{id:000, img:'dog'}, {id:001, img:'duck'}, {id:002, img:'mug'}, {id:003, img:'pen'}, {id:004, img:'plate'}]
 
-//
-
 var imgAssoc = function(){
   this.type = 3
   this.randomIndex = Math.floor(Math.random() * mains.length)
@@ -31,7 +29,7 @@ imgAssoc.prototype.getMainImage = function(index){
 
 
 imgAssoc.prototype.buildMainImageString = function(mainImage){
-  return '../minigame3/images/' + mainImage.img + '.jpg'
+  return '../imgAssoc/images/' + mainImage.img + '.jpg'
 };
 
 
@@ -67,7 +65,7 @@ imgAssoc.prototype.getPromptArray = function(mainImageid){
 imgAssoc.prototype.buildPromptStrings = function(array){
   promptStrings = []
   array.forEach(function(entry){
-    promptStrings.push('../minigame3/images/' + entry.img + '.jpg')
+    promptStrings.push('../imgAssoc/images/' + entry.img + '.jpg')
   });
   return promptStrings
 };
