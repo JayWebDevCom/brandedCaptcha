@@ -3,7 +3,7 @@ var solutions = [{id:300, img:'adidasBoots'}, {id:301, img:'nikeBoots'}, {id:302
 var decoys = [{id:000, img:'dog'}, {id:001, img:'duck'}, {id:002, img:'mug'}, {id:003, img:'pen'}, {id:004, img:'plate'}]
 
 var imgAssoc = function(){
-  this.type = 3
+  this.type = 'imgAssoc'
   this.randomIndex = Math.floor(Math.random() * mains.length)
 
   this.promptArray = this.getPromptArray(this.getMainImage(this.randomIndex).id);

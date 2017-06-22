@@ -21,7 +21,7 @@ app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/images'));
 
 app.get('/', function(req, res){
-    res.redirect('/minigame')
+  res.redirect('/minigame')
 });
 
 app.get('/minigame', function(req, res){
@@ -50,7 +50,7 @@ app.get('/imgAssoc', function(req, res){
   req.session.mainImageId = captcha.gameData.mainId
 
   res.render('imgAssoc', {
-    gameData: captcha.gameData
+    gamedata: captcha.gameData
   });
 });
 

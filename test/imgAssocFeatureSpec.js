@@ -7,7 +7,6 @@ var sinon = require('sinon')
 describe('imgAssoc', function(){
   const browser = new Browser();
 
-
   beforeEach(function(done) {
     browser.visit('http://localhost:8080/imgAssoc', done);
   });
