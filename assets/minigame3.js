@@ -5,19 +5,20 @@ var decoys = [{id:000, img:'dog'}, {id:001, img:'duck'}, {id:002, img:'mug'}, {i
 //
 
 var imgAssoc = function(){
-
   this.type = 3
   this.randomIndex = Math.floor(Math.random() * mains.length)
-  //
-  this.mainImage = this.getMainImage(this.randomIndex)
-  this.mainImageString = this.buildMainImageString(this.mainImage)
-  //
-  this.promptArray = this.getPromptArray(this.mainImage.id)
-  this.promptStrings = this.buildPromptStrings(this.promptArray)
-  //
-  this.solution = this.getSolution(this.mainImage.id)
-
+  this.gameData = {
+    mainId: this.getMainImage(this.randomIndex).id,
+    mainString: this.buildMainImageString(this.getMainImage(this.randomIndex)),
+    promptArray: this.getPromptArray(this.getMainImage(this.randomIndex).id),
+    promptStrings: this.buildPromptStrings(this.getPromptArray(this.getMainImage(this.randomIndex).id)),
+    solution: this.getSolution(this.getMainImage(this.randomIndex).id)
+  }
 };
+
+imgAssoc.prototype.getGameData = function () {
+  return this.gameData
+}
 
 
 imgAssoc.prototype.getMainImage = function(index){
