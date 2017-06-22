@@ -1,16 +1,17 @@
 var Minigames = require('../assets/minigames.js')
-var Minigame3 = require('../assets/minigame3.js')
-
+var areaClick = require('../assets/areaClick.js')
+var minigames
 describe('minigames', function(){
 
   it('instantiates', function(){
-    var minigames = new Minigames();
+    minigames = new Minigames();
     expect(minigames instanceof Minigames).toBeTruthy();
   })
 
   it('can return a minigame from an array', function(){
-    var minigames = new Minigames(1);
-    var minigame3 = minigames.getGame();
-    expect(minigame3 instanceof Minigame3).toBeTruthy();
+    minigames = new Minigames(1);
+    var game = minigames.getGame();
+    expect(game instanceof areaClick).toBeTruthy();
   });
+  
 })

@@ -1,4 +1,4 @@
-var randImage = require('../assets/minigame1.js')
+var randImage = require('../assets/nameGame.js')
 
 describe('answer checking', function(){
 

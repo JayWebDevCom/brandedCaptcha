@@ -12,7 +12,7 @@ describe('imgAssoc', function(){
   });
 
   it('automatically returns an image url when prompted with an argument', function(){
-    expect(captcha.buildMainImageString({id:300, img:'cisse'})).toEqual('../minigame3/images/cisse.jpg');
+    expect(captcha.buildMainImageString({id:300, img:'cisse'})).toEqual('../imgAssoc/images/cisse.jpg');
   });
 
   it('returns the correct solution ID when provided a main image', function(){
