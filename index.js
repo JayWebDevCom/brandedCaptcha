@@ -83,6 +83,7 @@ app.get('/failed', function(req, res){
 
 app.post('/checkanswerAreaClick', function(req, res){
   clickArea = require('./assets/areaClick.js');
+  console.log(req.body)
   captcha = new clickArea();
   if(captcha.getSolution([req.session.gamekey , req.body])){
     req.session.authenticate = true
