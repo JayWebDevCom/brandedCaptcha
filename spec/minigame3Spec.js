@@ -30,7 +30,7 @@ describe('imgAssoc', function(){
     expect(captcha.promptArray.length).toEqual(3)
   })
 
-  it('#gameData method retruns a hash of 5 elements containing including the solution', function(){
+  it('#gameData method retruns a hash of 5 elements including the solution', function(){
     var captcha = new imgAssoc();
     captcha.gameData.mainId = 300
     var mainImage = {id:300, img:'cisse'}
