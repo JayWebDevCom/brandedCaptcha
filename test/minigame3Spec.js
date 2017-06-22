@@ -11,12 +11,10 @@ describe('minigame3', function(){
   });
 
   it('should display an image with id mainImage', function(){
-    browser.assert.success()
     browser.assert.element('img#mainImage')
   })
 
   it('should display 3 images on the page with class testImage', function(){
-    browser.assert.success()
     browser.assert.elements('img.testImage', 3)
   });
 

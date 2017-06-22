@@ -1,4 +1,3 @@
-var $ = require('jquery')
 const Browser = require('zombie');
 var expect = require('chai').expect
 var assert = require('assert');
