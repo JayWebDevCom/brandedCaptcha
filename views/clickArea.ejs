@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <script>
+    var event;
+    function answerClick(event){
+      event.preventDefault();
+      var form = document.getElementById('post-answer')
+      var answers = [event.clientX, event.clientY];
+      console.log(answers)
+      htmlString = '<input type="hidden" name="answers" value="' + answers + '">'
+      form.insertAdjacentHTML('beforeend', htmlString)
+      sendAnswers();
+    }
+    function sendAnswers(){
+      document.getElementById('post-answer').submit();
+    }
+    </script>
+
+  </head>
+  <body>
+    <h1>Click on the Coke label</h1>
+
+    <img id="logoArea" src="<%= gamedata %>" onclick="answerClick(event)">
+    <form id="post-answer" method="post" action="/checkanswerAreaClick"></form>
+  </body>
+
+</html>

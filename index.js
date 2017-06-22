@@ -27,10 +27,11 @@ app.get('/', function(req, res){
 
 app.get('/minigame', function(req, res){
   var captcha = new Minigames().getGame()
-  res.send(captcha)
-    req.session.captcha = captcha
-    console.log(req.session.captcha)
-    req.session.solution = captcha.solution
+  req.session.gamekey = captcha.gamekey;
+  var viewString = captcha.type + '.ejs'
+  res.render(viewString, {
+    gamedata: captcha.gameData,
+  })
 });
 
 app.post('/minigame', function(req, res){
@@ -60,3 +61,15 @@ app.get('/confirmed', function(req, res){
 app.get('/failed', function(req, res){
   res.render('failed')
 });
+
+app.post('/checkanswerAreaClick', function(req, res){
+  clickArea = require('./assets/areaClick.js');
+  captcha = new clickArea();
+  var result = captcha.getSolution([req.session.gamekey , req.body.answers]);
+  if(result){
+    req.session.authenticate = true
+    return res.redirect('/confirmed')
+  }else{
+    return res.redirect('/failed')
+  }
+})
