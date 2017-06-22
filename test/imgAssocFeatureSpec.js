@@ -4,12 +4,12 @@ var assert = require('assert');
 var app = require('../index.js')
 var sinon = require('sinon')
 
-describe('minigame3', function(){
+describe('imgAssoc', function(){
   const browser = new Browser();
 
 
   beforeEach(function(done) {
-    browser.visit('http://localhost:8080/minigame3', done);
+    browser.visit('http://localhost:8080/imgAssoc', done);
   });
 
   it('should display an image with id mainImage', function(){

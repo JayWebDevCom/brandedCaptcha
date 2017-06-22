@@ -13,7 +13,6 @@ ClickArea.prototype.getSolution = function(answer){
     return hash.id === answer[0];
   }
   var solution = solutions.find(findSolution);
-  console.log(answer[1])
   return (
     Number(answer[1].x) > solution.xLowLimit &&
     Number(answer[1].x) < solution.xHighLimit &&
