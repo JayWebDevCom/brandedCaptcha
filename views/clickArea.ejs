@@ -9,13 +9,8 @@
     function answerClick(event){
       event.preventDefault();
       var form = document.getElementById('post-answer')
-      var answers = [event.clientX, event.clientY];
-      console.log(answers)
-      htmlString = '<input type="hidden" name="answers" value="' + answers + '">'
+      htmlString = '<input type="hidden" name="answers" value="' + [event.clientX, event.clientY] + '">'
       form.insertAdjacentHTML('beforeend', htmlString)
-      sendAnswers();
-    }
-    function sendAnswers(){
       document.getElementById('post-answer').submit();
     }
     </script>

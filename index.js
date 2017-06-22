@@ -65,11 +65,11 @@ app.get('/failed', function(req, res){
 app.post('/checkanswerAreaClick', function(req, res){
   clickArea = require('./assets/areaClick.js');
   captcha = new clickArea();
-  var result = captcha.getSolution([req.session.gamekey , req.body.answers]);
-  if(result){
+  if(captcha.getSolution([req.session.gamekey , req.body.answers])){
     req.session.authenticate = true
     return res.redirect('/confirmed')
   }else{
+    req.session.authenticate = false
     return res.redirect('/failed')
   }
 })
