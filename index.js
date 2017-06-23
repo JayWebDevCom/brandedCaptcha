@@ -42,12 +42,13 @@ app.post('/minigame', function(req, res){
   }
 })
 
+
+
 app.get('/imgAssoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
 
-  req.session.promptArray = captcha.gameData.promptArray
-  req.session.mainImageId = captcha.gameData.mainId
+  req.session.gamekey = captcha.gamekey
 
   res.render('imgAssoc', {
     gamedata: captcha.gameData
@@ -57,13 +58,7 @@ app.get('/imgAssoc', function(req, res){
 app.post('/imgAssoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
-
-  var mainImageId = req.session.mainImageId
-  var promptArray = req.session.promptArray
-  var index = req.body.promptImage
-
-
-  if (captcha.checkAnswer(mainImageId, index, promptArray)) {
+  if (captcha.checkAnswer(req.session.gamekey, req.body.promptImage)) {
     req.session.authenticate = true
     return res.redirect('/confirmed')
   }else{

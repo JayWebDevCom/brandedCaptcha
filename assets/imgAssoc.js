@@ -9,12 +9,11 @@ var imgAssoc = function(){
   this.promptArray = this.getPromptArray(this.getMainImage(this.randomIndex).id);
   this.promptStrings = this.buildPromptStrings(this.promptArray);
 
+  this.gamekey = this.getMainImage(this.randomIndex).id
+
   this.gameData = {
-    mainId: this.getMainImage(this.randomIndex).id,
     mainString: this.buildMainImageString(this.getMainImage(this.randomIndex)),
-    promptArray: this.promptArray,
-    promptStrings: this.promptStrings,
-    solution: this.getSolution(this.getMainImage(this.randomIndex).id)
+    promptStrings: this.promptStrings
   };
 };
 
@@ -29,7 +28,7 @@ imgAssoc.prototype.getMainImage = function(index){
 
 
 imgAssoc.prototype.buildMainImageString = function(mainImage){
-  return '../imgAssoc/images/' + mainImage.img + '.jpg'
+  return mainImage.img
 };
 
 
@@ -65,13 +64,20 @@ imgAssoc.prototype.getPromptArray = function(mainImageid){
 imgAssoc.prototype.buildPromptStrings = function(array){
   promptStrings = []
   array.forEach(function(entry){
-    promptStrings.push('../imgAssoc/images/' + entry.img + '.jpg')
+    promptStrings.push(entry.img)
   });
   return promptStrings
 };
 
-imgAssoc.prototype.checkAnswer = function(mainImageId, index, promptArray){
-  return mainImageId === promptArray[index].id
+imgAssoc.prototype.checkAnswer = function(gamekey, name){
+
+  function findImage(hash) {
+    return gamekey === hash.id;
+  };
+
+  var returnedImage = solutions.find(findImage);
+
+  return returnedImage.img === name
 }
 
 imgAssoc.prototype.testFunction = function(index){
