@@ -5,7 +5,7 @@ var mains = [
 
 var solutions = [
   { id: 400, xLowLimit: 90, xHighLimit: 110, yLowLimit: 100, yHighLimit: 110},
-  { id: 401, x: null, y: null}
+  { id: 401, xLowLimit: 160, xHighLimit: 250, yLowLimit: 70, yHighLimit: 120}
 ]
 
 var DragAndDrop = function(stubNumber){
@@ -15,17 +15,19 @@ var DragAndDrop = function(stubNumber){
   this.gameData = mains[randomIndex];
 }
 
-DragAndDrop.prototype.checkSolution = function(gamekey, answer){
+DragAndDrop.prototype.checkSolution = function(gameKey, answer){
   function findSolution(hash){
-    return hash.id === gamekey
+    return hash.id === gameKey
   };
 
   var solution = solutions.find(findSolution)
 
-  return ( answer.x >= solution.xLowLimit &&
-           answer.x <= solution.xHighLimit &&
-           answer.y >= solution.yLowLimit &&
-           answer.y <= solution.yHighLimit )
+  answer = answer.split(',')
+
+  return ( Number(answer[0]) >= solution.xLowLimit &&
+           Number(answer[0]) <= solution.xHighLimit &&
+           Number(answer[1]) >= solution.yLowLimit &&
+           Number(answer[1]) <= solution.yHighLimit )
 };
 
 

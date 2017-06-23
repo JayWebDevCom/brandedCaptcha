@@ -66,13 +66,28 @@ app.post('/imgAssoc', function(req, res){
   }
 })
 
+app.post('/dragAndDrop', function(req, res){
+  var DragAndDrop = require('./assets/dragAndDrop')
+  var captcha = new DragAndDrop
+
+  console.log(req.body.response)
+
+  if (captcha.checkSolution(req.session.gameKey, req.body.response)) {
+    req.session.authenticate = true
+    return res.redirect('/confirmed')
+  }else{
+    req.session.authenticate = false
+    return res.redirect('/failed')
+  }
+})
+
 //TESTING ONLY ROUTES
 
 app.get('/imgAssoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
 
-  req.session.gamekey = captcha.gamekey
+  req.session.gameKey = captcha.gamekey
 
   res.render('imgAssoc', {
     gamedata: captcha.gameData
@@ -94,7 +109,7 @@ app.get('/dragAndDrop', function(req, res){
   var dragAndDrop = require('./assets/dragAndDrop')
   var captcha = new dragAndDrop();
 
-  req.session.gamekey = captcha.gamekey
+  req.session.gameKey = captcha.gameKey
 
   res.render('dragAndDrop', {
     gameData: captcha.gameData
