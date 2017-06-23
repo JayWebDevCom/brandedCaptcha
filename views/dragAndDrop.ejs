@@ -6,5 +6,13 @@
   </head>
   <body>
 
+    <div id="main-image-div">
+      <img src="../dragAndDrop/<%=gameData.img%>.jpg" id="main-image" width="400px" ondragover="allowDrop(event)" ondrop="drop(event)">
+    </div>
+
+    <div id="prompt-images">
+      <img src="../dragAndDrop/<%=gameData.object%>.png" id="prompt-image0" width="100" ondragstart="drag(event)">
+    </div>
+
   </body>
 </html>

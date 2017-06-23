@@ -97,6 +97,6 @@ app.get('/dragAndDrop', function(req, res){
   req.session.gamekey = captcha.gamekey
 
   res.render('dragAndDrop', {
-    gamedata: captcha.gameData
+    gameData: captcha.gameData
   });
 })
