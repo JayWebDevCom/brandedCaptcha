@@ -3,12 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script>
+
+      function drop(event){
+        ev.preventDefault();
+        var x = event.clientX;
+        var y = event.clientY;
+        var form = document.getElementById("main-image-form")
+        var string = '<input type="hidden" value="{ x: ' + x + ', y:' + y + ' }">'
+        form.insertAdjacentHTML('beforeend', string)
+        form.submit();
+      }
+      
+    </script>
   </head>
   <body>
 
-    <div id="main-image-div">
-      <img src="../dragAndDrop/<%=gameData.img%>.jpg" id="main-image" width="400px" ondragover="allowDrop(event)" ondrop="drop(event)">
-    </div>
+    <form id="main-image-form" action="/dragAndDrop" method="post">
+      <input type="image" src="../dragAndDrop/<%=gameData.img%>.jpg" id="main-image" width="400px" ondragover="allowDrop(event)" ondrop="drop(event)">
+    </form>
 
     <div id="prompt-images">
       <img src="../dragAndDrop/<%=gameData.object%>.png" id="prompt-image0" width="100" ondragstart="drag(event)">
