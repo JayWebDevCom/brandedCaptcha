@@ -1,11 +1,13 @@
 var mains = [
-  { id: 400, img: 'something', object: 'thing'},
-  { id: 401, img: 'car-front', object: 'logo'}
+  { id: 400, img: 'jetty', object: 'boat'},
+  { id: 401, img: 'car-front', object: 'logo'},
+  { id: 402, img: 'hugh', object: 'glasses'}
 ]
 
 var solutions = [
-  { id: 400, xLowLimit: 90, xHighLimit: 110, yLowLimit: 100, yHighLimit: 110},
-  { id: 401, xLowLimit: 160, xHighLimit: 250, yLowLimit: 70, yHighLimit: 120}
+  { id: 400, xLowLimit: 125, xHighLimit: 375, yLowLimit: 95, yHighLimit: 205},
+  { id: 401, xLowLimit: 160, xHighLimit: 250, yLowLimit: 70, yHighLimit: 120},
+  { id: 402, xLowLimit: 137, xHighLimit: 184, yLowLimit: 90, yHighLimit: 134}
 ]
 
 var DragAndDrop = function(stubNumber){
