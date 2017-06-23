@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="captchupFiles/loadModal.js"></script>
+
+</head>
+<body>
+  <div id="dialog-message">
     <img src="../imgAssoc/<%= gamedata.mainString %>.jpg" id="mainImage" width='600' border=1pt>
     <div id="testImages">
       <form action='/imgAssoc' method='post'>
@@ -12,6 +19,9 @@
         <input type="image" src="../imgAssoc/<%= gamedata.promptStrings[1]%>.jpg" id="img1" class="testImage" width='200' value="<%= gamedata.promptStrings[1] %>" name="promptImage">
         <input type="image" src="../imgAssoc/<%= gamedata.promptStrings[2]%>.jpg" id="img2" class="testImage" width='200' value="<%= gamedata.promptStrings[2] %>" name="promptImage">
       </form>
-    <div id="testImages">
-  </body>
+    </div>
+  </div>
+  <button id='refreshButton'>Please re-submit Captcha</button>
+  <script src="captchupFiles/refreshModal.js"></script>
+</body>
 </html>
