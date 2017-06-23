@@ -32,25 +32,15 @@ app.get('/minigame', function(req, res){
   })
 });
 
-app.post('/minigame', function(req, res){
-  if (getAnswer(req.body.text, req.session.ourNumber)) {
-    req.session.authenticate = true
-    return res.redirect('/confirmed')
-  }else{
-    return res.redirect('/failed')
-  }
+
+app.get('/confirmed', function(req, res){
+  if (req.session.authenticate){res.render('confirmed')}
+  else{res.redirect('/failed')};
 })
 
-app.get('/clickArea', function(req, res){
-  var ClickArea = require('./assets/areaClick')
-  var captcha = new ClickArea
-
-  req.session.gamekey = captcha.gamekey
-
-  res.render('clickArea', {
-    gamedata: captcha.gameData
-  });
-})
+app.get('/failed', function(req, res){
+  res.render('failed')
+});
 
 app.post('/areaClick', function(req, res){
   clickArea = require('./assets/areaClick.js');
@@ -64,17 +54,6 @@ app.post('/areaClick', function(req, res){
   }
 })
 
-app.get('/imgAssoc', function(req, res){
-  var ImgAssoc = require('./assets/imgAssoc')
-  var captcha = new ImgAssoc
-
-  req.session.gamekey = captcha.gamekey
-
-  res.render('imgAssoc', {
-    gamedata: captcha.gameData
-  });
-});
-
 app.post('/imgAssoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
@@ -87,11 +66,37 @@ app.post('/imgAssoc', function(req, res){
   }
 })
 
-app.get('/confirmed', function(req, res){
-  if (req.session.authenticate){res.render('confirmed')}
-  else{res.redirect('/failed')};
+//TESTING ONLY ROUTES
+
+app.get('/imgAssoc', function(req, res){
+  var ImgAssoc = require('./assets/imgAssoc')
+  var captcha = new ImgAssoc
+
+  req.session.gamekey = captcha.gamekey
+
+  res.render('imgAssoc', {
+    gamedata: captcha.gameData
+  });
+});
+
+app.get('/areaClick', function(req, res){
+  var areaClick = require('./assets/areaClick')
+  var captcha = new areaClick
+
+  req.session.gamekey = captcha.gamekey
+
+  res.render('clickArea', {
+    gamedata: captcha.gameData
+  });
 })
 
-app.get('/failed', function(req, res){
-  res.render('failed')
-});
+app.get('/dragAndDrop', function(req, res){
+  var dragAndDrop = require('./assets/dragAndDrop')
+  var captcha = new dragAndDrop();
+
+  req.session.gamekey = captcha.gamekey
+
+  res.render('dragAndDrop', {
+    gamedata: captcha.gameData
+  });
+})
