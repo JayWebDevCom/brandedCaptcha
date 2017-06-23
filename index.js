@@ -18,7 +18,10 @@ app.listen(8080, function(){
 })
 
 app.set('view engine', 'ejs')
+app.use('/captchupFiles', express.static('captchupFiles'));
+
 app.use(express.static(__dirname + '/images'));
+
 
 app.get('/', function(req, res){
   res.redirect('/minigame')
@@ -95,3 +98,7 @@ app.get('/confirmed', function(req, res){
 app.get('/failed', function(req, res){
   res.render('failed')
 });
+
+
+var modalRoutes = require('./routes/modalRoutes')
+app.use('/modal', modalRoutes.index);
