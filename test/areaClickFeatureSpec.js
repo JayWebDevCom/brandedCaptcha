@@ -15,7 +15,7 @@ describe('areaClick feature testing', function(){
 
   it('has the coke logo minigame', function(done){
     browser.visit('http://localhost:8080/').then(function(){
-      browser.assert.text('h1', 'Click on the Coke label');
+      browser.assert.text('h1', 'Click on Michael Jordan\'s Armband');
     }).then(done)
   })
 
