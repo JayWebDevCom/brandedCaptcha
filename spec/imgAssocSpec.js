@@ -26,6 +26,6 @@ describe('imgAssoc', function(){
 
   it('Captcha carries info on gameData including a gamekey', function(){
     expect(Object.keys(captcha.getGameData()).length).toEqual(2)
-    expect(captcha.gamekey).toBeTruthy()
+    expect(captcha.gameKey).toBeTruthy()
   })
 })
