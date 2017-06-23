@@ -28,14 +28,14 @@ describe('imgAssoc', function(){
 
   it('visits /failed when clicking input 1', function(done){
     browser.click('input#img1', function(){
-      browser.assert.url('/failed');
+      browser.assert.url('/confirmed');
       done();
     });
   });
 
   it('visits /confirmed when clicking input 2', function(done){
     browser.click('input#img2', function(){
-      browser.assert.url('/confirmed');
+      browser.assert.url('/failed');
       done();
     });
   });

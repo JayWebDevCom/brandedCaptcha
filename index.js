@@ -27,8 +27,7 @@ app.get('/', function(req, res){
 app.get('/minigame', function(req, res){
   var captcha = new Minigames().getGame()
   req.session.gamekey = captcha.gamekey;
-  var viewString = captcha.type + '.ejs'
-  res.render(viewString, {
+  res.render(captcha.type, {
     gamedata: captcha.gameData,
   })
 });
@@ -42,7 +41,28 @@ app.post('/minigame', function(req, res){
   }
 })
 
+app.get('/clickArea', function(req, res){
+  var ClickArea = require('./assets/areaClick')
+  var captcha = new ClickArea
 
+  req.session.gamekey = captcha.gamekey
+
+  res.render('clickArea', {
+    gamedata: captcha.gameData
+  });
+})
+
+app.post('/areaClick', function(req, res){
+  clickArea = require('./assets/areaClick.js');
+  captcha = new clickArea();
+  if(captcha.getSolution([req.session.gamekey , req.body])){
+    req.session.authenticate = true
+    return res.redirect('/confirmed')
+  }else{
+    req.session.authenticate = false
+    return res.redirect('/failed')
+  }
+})
 
 app.get('/imgAssoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
@@ -75,16 +95,3 @@ app.get('/confirmed', function(req, res){
 app.get('/failed', function(req, res){
   res.render('failed')
 });
-
-app.post('/checkanswerAreaClick', function(req, res){
-  clickArea = require('./assets/areaClick.js');
-  console.log(req.body)
-  captcha = new clickArea();
-  if(captcha.getSolution([req.session.gamekey , req.body])){
-    req.session.authenticate = true
-    return res.redirect('/confirmed')
-  }else{
-    req.session.authenticate = false
-    return res.redirect('/failed')
-  }
-})
