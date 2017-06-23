@@ -24,14 +24,26 @@
 
 </head>
 <body>
-<div id="dialog-message">
-<h1><%= gamedata.prompt %></h1>
+  <div id="dialog-message">
+    <h1><%= gamedata.prompt %></h1>
 
-<form id="post-answer" method="post" action="/areaClick">
-  <input width="400" type="image" id="logoArea" src="areaclick/<%= gamedata.img %>">
-</form>
-</div>
-
+    <form id="post-answer" method="post" action="/areaClick">
+      <input width="400" type="image" id="logoArea" src="areaclick/<%= gamedata.img %>">
+    </form>
+  </div>
+  <button id='refreshButton'>Please re-submit Captcha</button>
+  <script>
+  document.getElementById('refreshButton').onclick = function(){
+    $( "#dialog-message" ).dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+  }
+  </script>
 
 </body>
 
