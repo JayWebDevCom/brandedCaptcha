@@ -5,6 +5,8 @@ $( function() {
       Ok: function() {
         $( this ).dialog( "close" );
       }
-    }
+    },
+    width: 'auto',
+    
   });
 } );
