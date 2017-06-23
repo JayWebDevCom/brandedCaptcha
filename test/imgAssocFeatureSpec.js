@@ -8,7 +8,7 @@ describe('imgAssoc', function(){
   const browser = new Browser();
 
   beforeEach(function(done) {
-    browser.visit('http://localhost:8080/imgAssoc', done);
+    browser.visit('http://localhost:8080/img-assoc', done);
   });
 
   it('should display an image with id mainImage', function(){

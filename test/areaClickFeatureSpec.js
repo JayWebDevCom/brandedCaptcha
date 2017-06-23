@@ -14,13 +14,13 @@ describe('areaClick feature testing', function(){
   })
 
   it('has the coke logo minigame', function(done){
-    browser.visit('http://localhost:8080/clickArea').then(function(){
+    browser.visit('http://localhost:8080/area-click').then(function(){
       browser.assert.text('h1', 'Click the Coke Label');
     }).then(done)
   })
 
   it('clicks on the logo', function(done){
-    browser.visit('http://localhost:8080/clickArea').then(function(){
+    browser.visit('http://localhost:8080/area-click').then(function(){
       browser.click('#logoArea', function(){
         browser.assert.text('h1', 'You are a Robot');
         done();
