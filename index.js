@@ -21,14 +21,13 @@ app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/images'));
 
 app.get('/', function(req, res){
-    res.redirect('/minigame')
+  res.redirect('/minigame')
 });
 
 app.get('/minigame', function(req, res){
   var captcha = new Minigames().getGame()
   req.session.gamekey = captcha.gamekey;
-  var viewString = captcha.type + '.ejs'
-  res.render(viewString, {
+  res.render(captcha.type, {
     gamedata: captcha.gameData,
   })
 });
@@ -42,28 +41,44 @@ app.post('/minigame', function(req, res){
   }
 })
 
+app.get('/clickArea', function(req, res){
+  var ClickArea = require('./assets/areaClick')
+  var captcha = new ClickArea
+
+  req.session.gamekey = captcha.gamekey
+
+  res.render('clickArea', {
+    gamedata: captcha.gameData
+  });
+})
+
+app.post('/areaClick', function(req, res){
+  clickArea = require('./assets/areaClick.js');
+  captcha = new clickArea();
+  if(captcha.getSolution([req.session.gamekey , req.body])){
+    req.session.authenticate = true
+    return res.redirect('/confirmed')
+  }else{
+    req.session.authenticate = false
+    return res.redirect('/failed')
+  }
+})
+
 app.get('/imgAssoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
 
-  req.session.promptArray = captcha.gameData.promptArray
-  req.session.mainImageId = captcha.gameData.mainId
+  req.session.gamekey = captcha.gamekey
 
   res.render('imgAssoc', {
-    gameData: captcha.gameData
+    gamedata: captcha.gameData
   });
 });
 
 app.post('/imgAssoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
-
-  var mainImageId = req.session.mainImageId
-  var promptArray = req.session.promptArray
-  var index = req.body.promptImage
-
-
-  if (captcha.checkAnswer(mainImageId, index, promptArray)) {
+  if (captcha.checkAnswer(req.session.gamekey, req.body.promptImage)) {
     req.session.authenticate = true
     return res.redirect('/confirmed')
   }else{
@@ -80,15 +95,3 @@ app.get('/confirmed', function(req, res){
 app.get('/failed', function(req, res){
   res.render('failed')
 });
-
-app.post('/checkanswerAreaClick', function(req, res){
-  clickArea = require('./assets/areaClick.js');
-  captcha = new clickArea();
-  if(captcha.getSolution([req.session.gamekey , req.body])){
-    req.session.authenticate = true
-    return res.redirect('/confirmed')
-  }else{
-    req.session.authenticate = false
-    return res.redirect('/failed')
-  }
-})

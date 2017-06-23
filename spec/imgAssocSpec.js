@@ -12,7 +12,7 @@ describe('imgAssoc', function(){
   });
 
   it('automatically returns an image url when prompted with an argument', function(){
-    expect(captcha.buildMainImageString({id:300, img:'cisse'})).toEqual('../imgAssoc/images/cisse.jpg');
+    expect(captcha.buildMainImageString({id:300, img:'cisse'})).toEqual('cisse');
   });
 
   it('returns the correct solution ID when provided a main image', function(){
@@ -24,8 +24,8 @@ describe('imgAssoc', function(){
     expect(captcha.promptArray.length).toEqual(3)
   })
 
-  it('#gameData method retruns a hash of 5 elements including the solution', function(){
-    expect(Object.keys(captcha.getGameData()).length).toEqual(5)
-    expect(captcha.getGameData().solution).toBeTruthy()
+  it('Captcha carries info on gameData including a gamekey', function(){
+    expect(Object.keys(captcha.getGameData()).length).toEqual(2)
+    expect(captcha.gamekey).toBeTruthy()
   })
 })

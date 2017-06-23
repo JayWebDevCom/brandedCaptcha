@@ -1,17 +1,17 @@
 var miniGame = require('../assets/areaClick.js')
 
 describe('Clicking on an Area minigame', function(){
-  miniGame = new miniGame(0);
+  miniGame = new miniGame(1);
 
   it('returns an image url string in game data array', function(){
-    expect(miniGame.gameData).toEqual(['CocaCola.jpg']);
+    expect(miniGame.gameData).toEqual({ id: 204, img: 'wwe2k18.jpg', prompt: 'Click on the number eight' });
   })
 
   it('returns a solution key', function(){
-    expect(miniGame.gamekey).toEqual(201);
+    expect(miniGame.gamekey).toEqual(204);
   })
   it('accepts correct solution', function(){
-    expect(miniGame.getSolution([201, { x: 520, y: 130}])).toBeTruthy();
+    expect(miniGame.getSolution([201, { x: 140, y: 60}])).toBeTruthy();
   })
 
 
