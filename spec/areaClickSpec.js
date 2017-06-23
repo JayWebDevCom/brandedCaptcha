@@ -14,7 +14,6 @@ describe('Clicking on an Area minigame', function(){
     expect(miniGame.getSolution([201, { x: 140, y: 60}])).toBeTruthy();
   })
 
-
   it('does not accept incorrect solution', function(){
     expect(miniGame.getSolution([201, { x: 50, y: 730}])).not.toBeTruthy();
   })

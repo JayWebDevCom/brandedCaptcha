@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+
+      function drag(event){
+        event.dataTransfer.setData("image", event.target.id)
+      };
+
+      function allowDrop(event){
+        event.preventDefault();
+      };
+
+      function drop(event){
+        event.preventDefault();
+        var coordinates = [event.clientX, event.clientY];
+        var form = document.getElementById('main-image-form')
+        var string = '<input type="hidden" value="'+ coordinates + '" name="response">'
+        form.insertAdjacentHTML('beforeend', string)
+        form.submit();
+      };
+
+    </script>
+  </head>
+  <body>
+
+    <img src="../dragAndDrop/<%=gamedata.img%>.jpg" id="main-image" width="400px" ondragover="allowDrop(event)" ondrop="drop(event)" class="mainImage">
+
+    <form id="main-image-form" action="/dragAndDrop" method="post">
+    </form>
+
+    <div id="prompt-images">
+      <img src="../dragAndDrop/<%=gamedata.object%>.png" id="prompt-image0" width="100" ondragstart="drag(event)" draggable="true">
+    </div>
+
+  </body>
+</html>

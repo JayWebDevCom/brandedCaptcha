@@ -35,25 +35,14 @@ app.get('/minigame', function(req, res){
   })
 });
 
-app.post('/minigame', function(req, res){
-  if (getAnswer(req.body.text, req.session.ourNumber)) {
-    req.session.authenticate = true
-    return res.redirect('/confirmed')
-  }else{
-    return res.redirect('/failed')
-  }
+app.get('/confirmed', function(req, res){
+  if (req.session.authenticate){res.render('confirmed')}
+  else{res.redirect('/failed')};
 })
 
-app.get('/clickArea', function(req, res){
-  var ClickArea = require('./assets/areaClick')
-  var captcha = new ClickArea
-
-  req.session.gamekey = captcha.gamekey
-
-  res.render('clickArea', {
-    gamedata: captcha.gameData
-  });
-})
+app.get('/failed', function(req, res){
+  res.render('failed')
+});
 
 app.post('/areaClick', function(req, res){
   clickArea = require('./assets/areaClick.js');
@@ -67,17 +56,6 @@ app.post('/areaClick', function(req, res){
   }
 })
 
-app.get('/imgAssoc', function(req, res){
-  var ImgAssoc = require('./assets/imgAssoc')
-  var captcha = new ImgAssoc
-
-  req.session.gamekey = captcha.gamekey
-
-  res.render('imgAssoc', {
-    gamedata: captcha.gameData
-  });
-});
-
 app.post('/imgAssoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
@@ -90,15 +68,55 @@ app.post('/imgAssoc', function(req, res){
   }
 })
 
-app.get('/confirmed', function(req, res){
-  if (req.session.authenticate){res.render('confirmed')}
-  else{res.redirect('/failed')};
+app.post('/dragAndDrop', function(req, res){
+  var DragAndDrop = require('./assets/dragAndDrop')
+  var captcha = new DragAndDrop
+
+  console.log(req.body.response)
+
+  if (captcha.checkSolution(req.session.gameKey, req.body.response)) {
+    req.session.authenticate = true
+    return res.redirect('/confirmed')
+  }else{
+    req.session.authenticate = false
+    return res.redirect('/failed')
+  }
 })
 
-app.get('/failed', function(req, res){
-  res.render('failed')
+//TESTING ONLY ROUTES
+
+app.get('/imgAssoc', function(req, res){
+  var ImgAssoc = require('./assets/imgAssoc')
+  var captcha = new ImgAssoc
+
+  req.session.gameKey = captcha.gamekey
+
+  res.render('imgAssoc', {
+    gamedata: captcha.gameData
+  });
 });
 
+app.get('/areaClick', function(req, res){
+  var areaClick = require('./assets/areaClick')
+  var captcha = new areaClick
+
+  req.session.gamekey = captcha.gamekey
+
+  res.render('clickArea', {
+    gamedata: captcha.gameData
+  });
+})
+
+app.get('/dragAndDrop', function(req, res){
+  var dragAndDrop = require('./assets/dragAndDrop')
+  var captcha = new dragAndDrop();
+
+  req.session.gameKey = captcha.gameKey
+
+  res.render('dragAndDrop', {
+    gameData: captcha.gameData
+  });
+})
 
 var modalRoutes = require('./routes/modalRoutes')
 app.use('/modal', modalRoutes.index);
