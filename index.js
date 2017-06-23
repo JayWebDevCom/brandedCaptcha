@@ -98,3 +98,7 @@ app.get('/confirmed', function(req, res){
 app.get('/failed', function(req, res){
   res.render('failed')
 });
+
+
+var modalRoutes = require('./routes/modalRoutes')
+app.use('/modal', modalRoutes.index);
