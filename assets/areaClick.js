@@ -1,8 +1,8 @@
 var mains = [
   { id: 201, img:'CocaCola.jpg', prompt: 'Click the Coke Label' },
-  { id: 203, img: 'jordan_dunk.jpg', prompt: 'Click on Michael Jordan\'s Armband'},
   { id: 204, img: 'wwe2k18.jpg', prompt: 'Click on the number eight' },
-  { id: 202, img:'google.jpg', prompt: 'Click the Orange Letter' }
+  { id: 202, img:'google.jpg', prompt: 'Click the Orange Letter' },
+  { id: 203, img: 'jordan_dunk.jpg', prompt: 'Click on Michael Jordan\'s Armband'}
 ]
 var solutions = [
   { id: 201, xLowLimit: 138, xHighLimit: 181, yLowLimit: 57, yHighLimit: 125 },
@@ -19,7 +19,6 @@ var ClickArea = function(stubNumber){
 }
 
 ClickArea.prototype.getSolution = function(answer){
-  console.log(answer)
   function findSolution(hash) {
     return hash.id === answer[0];
   }
