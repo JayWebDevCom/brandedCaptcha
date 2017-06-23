@@ -29,9 +29,9 @@ app.get('/', function(req, res){
 
 app.get('/minigame', function(req, res){
   var captcha = new Minigames().getGame()
-  req.session.gamekey = captcha.gamekey;
+  req.session.gameKey = captcha.gameKey;
   res.render(captcha.type, {
-    gamedata: captcha.gameData,
+    gameData: captcha.gameData,
   })
 });
 
@@ -47,7 +47,7 @@ app.get('/failed', function(req, res){
 app.post('/areaClick', function(req, res){
   clickArea = require('./assets/areaClick.js');
   captcha = new clickArea();
-  if(captcha.getSolution([req.session.gamekey , req.body])){
+  if(captcha.getSolution([req.session.gameKey , req.body])){
     req.session.authenticate = true
     return res.redirect('/confirmed')
   }else{
@@ -59,7 +59,7 @@ app.post('/areaClick', function(req, res){
 app.post('/imgAssoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
-  if (captcha.checkAnswer(req.session.gamekey, req.body.promptImage)) {
+  if (captcha.checkAnswer(req.session.gameKey, req.body.promptImage)) {
     req.session.authenticate = true
     return res.redirect('/confirmed')
   }else{
@@ -89,10 +89,10 @@ app.get('/imgAssoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
 
-  req.session.gameKey = captcha.gamekey
+  req.session.gameKey = captcha.gameKey
 
   res.render('imgAssoc', {
-    gamedata: captcha.gameData
+    gameData: captcha.gameData
   });
 });
 
@@ -100,10 +100,10 @@ app.get('/areaClick', function(req, res){
   var areaClick = require('./assets/areaClick')
   var captcha = new areaClick
 
-  req.session.gamekey = captcha.gamekey
+  req.session.gameKey = captcha.gameKey
 
   res.render('clickArea', {
-    gamedata: captcha.gameData
+    gameData: captcha.gameData
   });
 })
 
