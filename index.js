@@ -18,7 +18,10 @@ app.listen(8080, function(){
 })
 
 app.set('view engine', 'ejs')
+app.use('/captchupFiles', express.static('captchupFiles'));
+
 app.use(express.static(__dirname + '/images'));
+
 
 app.get('/', function(req, res){
   res.redirect('/minigame')

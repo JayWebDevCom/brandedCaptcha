@@ -8,19 +8,7 @@
 
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#dialog-message" ).dialog({
-      modal: true,
-      buttons: {
-        Ok: function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
-  } );
-  </script>
-
+  <script src="captchupFiles/loadModal.js"></script>
 
 </head>
 <body>
@@ -32,19 +20,6 @@
     </form>
   </div>
   <button id='refreshButton'>Please re-submit Captcha</button>
-  <script>
-  document.getElementById('refreshButton').onclick = function(){
-    $( "#dialog-message" ).dialog({
-      modal: true,
-      buttons: {
-        Ok: function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
-  }
-  </script>
-
+  <script src="captchupFiles/refreshModal.js"></script>
 </body>
-
 </html>
