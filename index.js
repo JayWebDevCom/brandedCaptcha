@@ -28,7 +28,7 @@ app.get('/', function(req, res){
 
 app.get('/minigame', function(req, res){
   var captcha = new Minigames().getGame()
-  req.session.gamekey = captcha.gamekey;
+  req.session.gameKey = captcha.gameKey;
   res.render(captcha.type, {
     gamedata: captcha.gameData,
   })
@@ -67,7 +67,7 @@ app.get('/img-assoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
 
-  req.session.gamekey = captcha.gamekey
+  req.session.gameKey = captcha.gameKey
 
   res.render('imgAssoc', {
     gamedata: captcha.gameData
@@ -77,7 +77,7 @@ app.get('/img-assoc', function(req, res){
 app.post('/img-assoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
-  if (captcha.checkAnswer(req.session.gamekey, req.body.promptImage)) {
+  if (captcha.checkAnswer(req.session.gameKey, req.body.promptImage)) {
     req.session.authenticate = true
   }else{
     req.session.authenticate = false

@@ -6,44 +6,28 @@ var imgAssoc = function(){
   this.type = 'imgAssoc'
   this.randomIndex = Math.floor(Math.random() * mains.length)
 
-  this.promptArray = this.getPromptArray(this.getMainImage(this.randomIndex).id);
+  this.gameKey = mains[this.randomIndex].id
+
+  this.promptArray = this.getPromptArray(this.gameKey);
   this.promptStrings = this.buildPromptStrings(this.promptArray);
 
-  this.gamekey = this.getMainImage(this.randomIndex).id
-
   this.gameData = {
-    mainString: this.buildMainImageString(this.getMainImage(this.randomIndex)),
+    mainString: mains[this.randomIndex].img,
     promptStrings: this.promptStrings
   };
 };
 
-imgAssoc.prototype.getGameData = function () {
-  return this.gameData
-}
+imgAssoc.prototype.getSolution = function(gameKey){
 
-
-imgAssoc.prototype.getMainImage = function(index){
-  return mains[index]
-};
-
-
-imgAssoc.prototype.buildMainImageString = function(mainImage){
-  return mainImage.img
-};
-
-
-imgAssoc.prototype.getSolution = function(mainImageid){
-
-  function findSolution(hash) {
-    return hash.id === mainImageid;
+  function findSolution(hash){
+    return gameKey === hash.id
   };
 
   return solutions.find(findSolution);
-
 };
 
 
-imgAssoc.prototype.getPromptArray = function(mainImageid){
+imgAssoc.prototype.getPromptArray = function(gameKey){
 
   function shuffle(array) {
     for (let i = array.length; i; i--) {
@@ -55,13 +39,14 @@ imgAssoc.prototype.getPromptArray = function(mainImageid){
   var promptArray = [];
 
   for(i = 0; i<2; i++){ promptArray.push(decoys[Math.floor(Math.random() * decoys.length)])};
-  promptArray.push(this.getSolution(mainImageid));
+  promptArray.push(this.getSolution(gameKey));
 
   shuffle(promptArray);
   return promptArray;
 };
 
 imgAssoc.prototype.buildPromptStrings = function(array){
+
   promptStrings = []
   array.forEach(function(entry){
     promptStrings.push(entry.img)
@@ -69,19 +54,12 @@ imgAssoc.prototype.buildPromptStrings = function(array){
   return promptStrings
 };
 
-imgAssoc.prototype.checkAnswer = function(gamekey, name){
-
+imgAssoc.prototype.checkAnswer = function(gameKey, name){
   function findImage(hash) {
-    return gamekey === hash.id;
+    return gameKey === hash.id;
   };
-
   var returnedImage = solutions.find(findImage);
-
   return returnedImage.img === name
-}
-
-imgAssoc.prototype.testFunction = function(index){
-  console.log('this is a test')
-}
+};
 
 module.exports = imgAssoc;
