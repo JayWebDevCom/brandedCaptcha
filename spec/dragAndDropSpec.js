@@ -7,6 +7,19 @@ describe('Drag and Drop minigame', function(){
     expect(game.gameData).toEqual({ id: 401, img: 'car-front', object: 'logo' })
   })
 
+  it('accepts a correct answer and returns true', function(){
+    var game = new DragAndDrop();
+    var answer = {x: 90, y: 110};
+    expect(game.checkSolution(400, answer)).toBeTruthy();
+  })
+
+  it('accepts a incorrect answer and returns false', function(){
+    var game = new DragAndDrop();
+    var answer = {x: 89, y: 111};
+    expect(game.checkSolution(400, answer)).not.toBeTruthy();
+  })
+
+
 
 
 
