@@ -1,12 +1,12 @@
 $( function() {
   $( "#dialog-message" ).dialog({
     modal: true,
-    buttons: {
-      Ok: function() {
-        $( this ).dialog( "close" );
-      }
-    },
+
     width: 'auto',
-    
+    closeOnEscape: false,
+    resizable: false,
+    maxHeight: 800,
+    position: {my: "center", at: "top", of: window }
+
   });
 } );
