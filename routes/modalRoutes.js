@@ -4,5 +4,5 @@ module.exports.index = function(req, res){
 
 module.exports.indexPost = function(req, res){
   var x = req.body.info
-  res.send('Response from form submission ' + x)
+  res.send('Response from form submission: ' + x)
 }

@@ -1,4 +1,4 @@
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<% include header %>
 
 <p>ok</p>
 
@@ -11,19 +11,4 @@
 
 <p id="response">Here</p>
 
-<script>
-$( "#pageForm" ).submit(function( event ) {
-  event.preventDefault();
-
-  var $form = $( this ),
-    term = $form.find( "input[name='info']" ).val()
-    url = $form.attr( "action" );
-
-  var posting = $.post( url, { info: term } );
-
-  posting.done(function( data ) {
-    var content = $( data )
-    $( "#response" ).empty().append( content.selector );
-  });
-});
-</script>
+<% include footer %>

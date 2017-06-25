@@ -12,7 +12,7 @@ describe('Ajax Call', function() {
     browser.visit('http://localhost:8080/modal', done);
   });
 
-  describe('submits form', function() {
+  describe('submits form and receives response', function() {
 
     before(function(done) {
       browser
@@ -20,12 +20,13 @@ describe('Ajax Call', function() {
       .pressButton('Submit', done);
     });
 
-    it('should be successful', function() {
+    it('should be successful and remain on same page', function() {
       browser.assert.success();
+      browser.assert.url('/modal');
     });
 
     it('should display entered text in the response div', function() {
-        browser.assert.text('p#response', 'Response from form submission ' + text);
+        browser.assert.text('p#response', 'Response from form submission: ' + text);
     });
   });
 });

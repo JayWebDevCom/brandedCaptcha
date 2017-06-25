@@ -4,6 +4,7 @@ var app = express();
 var session = require('express-session');
 var getAnswer = require('./assets/antworten')
 var Minigames = require('./assets/minigames')
+var partials = require('express-partials');
 
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
@@ -17,7 +18,8 @@ app.listen(8080, function(){
   console.log('port is 8080!')
 })
 
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
+app.use(partials());
 app.use('/captchupFiles', express.static('captchupFiles'));
 
 app.use(express.static(__dirname + '/images'));
@@ -120,5 +122,4 @@ app.get('/dragAndDrop', function(req, res){
 
 var modalRoutes = require('./routes/modalRoutes')
 app.get('/modal', modalRoutes.index);
-
 app.post('/modal', modalRoutes.indexPost);
