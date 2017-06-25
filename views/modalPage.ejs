@@ -1,0 +1,29 @@
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<p>ok</p>
+
+<form action="/modal" method="post" id="pageForm">
+  <label>Info
+    <input type="text" name="info">
+  </label>
+  <input type="submit" value="Submit">
+</form>
+
+<p id="response">Here</p>
+
+<script>
+$( "#pageForm" ).submit(function( event ) {
+  event.preventDefault();
+
+  var $form = $( this ),
+    term = $form.find( "input[name='info']" ).val()
+    url = $form.attr( "action" );
+
+  var posting = $.post( url, { info: term } );
+
+  posting.done(function( data ) {
+    var content = $( data )
+    $( "#response" ).empty().append( content.selector );
+  });
+});
+</script>
