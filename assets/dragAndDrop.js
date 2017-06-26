@@ -7,7 +7,7 @@ var mains = [
 var solutions = [
   { id: 400, xLowLimit: 125, xHighLimit: 375, yLowLimit: 95, yHighLimit: 205},
   { id: 401, xLowLimit: 160, xHighLimit: 250, yLowLimit: 70, yHighLimit: 120},
-  { id: 402, xLowLimit: 137, xHighLimit: 184, yLowLimit: 90, yHighLimit: 134}
+  { id: 402, xLowLimit: 700, xHighLimit: 730, yLowLimit: 130, yHighLimit: 170}
 ]
 
 var DragAndDrop = function(stubNumber){

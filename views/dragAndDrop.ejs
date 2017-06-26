@@ -3,6 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../captchupFiles/loadModal.js"></script>
     <script>
 
       function drag(event){
@@ -25,15 +31,15 @@
     </script>
   </head>
   <body>
-
-    <img src="../dragAndDrop/<%=gameData.img%>.jpg" id="main-image" width="400px" ondragover="allowDrop(event)" ondrop="drop(event)" class="mainImage">
-
-    <form id="main-image-form" action="/drag-and-drop" method="post">
-    </form>
-
-    <div id="prompt-images">
-      <img src="../dragAndDrop/<%= gameData.object %>.png" id="prompt-image0" width="100" ondragstart="drag(event)" draggable="true">
-    </div>
+    <div id="dialog-message">
+      <img src="../dragAndDrop/<%=gameData.img%>.jpg" id="main-image" width="400px" ondragover="allowDrop(event)" ondrop="drop(event)" class="mainImage">
+      <form id="main-image-form" action="/drag-and-drop" method="post"></form>
+      <div id="prompt-images">
+        <img src="../dragAndDrop/<%= gameData.object %>.png" id="prompt-image0" width="100" ondragstart="drag(event)" draggable="true">
+      </div>
+  </div>
+  <button id='refreshButton'>Please re-submit Captcha</button>
+  <script src="../captchupFiles/refreshModal.js"></script>
 
   </body>
 </html>
