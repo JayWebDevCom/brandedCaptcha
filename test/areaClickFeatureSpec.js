@@ -7,6 +7,7 @@ var app = require('../index.js');
 describe('areaClick feature testing', function(){
   const browser = new Browser();
   var stubRandom = sinon.stub(Math, 'random').returns(0);
+
   it('goes to index, gets redirected to miniGame', function(done){
     browser.visit('http://localhost:8080/').then(function(){
       browser.assert.url('http://localhost:8080/minigame');
@@ -14,13 +15,13 @@ describe('areaClick feature testing', function(){
   })
 
   it('has the coke logo minigame', function(done){
-    browser.visit('http://localhost:8080/areaClick').then(function(){
+    browser.visit('http://localhost:8080/area-click').then(function(){
       browser.assert.text('h1', 'Click the Coke Label');
     }).then(done)
   })
 
   it('clicks on the logo', function(done){
-    browser.visit('http://localhost:8080/areaClick').then(function(){
+    browser.visit('http://localhost:8080/area-click').then(function(){
       browser.click('#logoArea', function(){
         browser.assert.text('h1', 'You are a Robot');
         done();
