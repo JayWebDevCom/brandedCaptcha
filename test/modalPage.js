@@ -9,6 +9,7 @@ describe('Ajax Call', function() {
   var text = 'This is my information'
 
   before(function(done) {
+    this.timeout(15000);
     browser.visit('http://localhost:8080/modal', done);
   });
 
