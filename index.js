@@ -44,7 +44,7 @@ app.get('/failed', function(req, res){
   res.render('failed')
 });
 
-app.post('/areaClick', function(req, res){
+app.post('/area-click', function(req, res){
   clickArea = require('./assets/areaClick.js');
   captcha = new clickArea();
   if(captcha.getSolution([req.session.gameKey , req.body])){
@@ -56,7 +56,7 @@ app.post('/areaClick', function(req, res){
   }
 })
 
-app.post('/imgAssoc', function(req, res){
+app.post('/img-assoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
   if (captcha.checkAnswer(req.session.gameKey, req.body.promptImage)) {
@@ -68,7 +68,7 @@ app.post('/imgAssoc', function(req, res){
   }
 })
 
-app.post('/dragAndDrop', function(req, res){
+app.post('/drag-and-drop', function(req, res){
   var DragAndDrop = require('./assets/dragAndDrop')
   var captcha = new DragAndDrop
 
@@ -85,7 +85,7 @@ app.post('/dragAndDrop', function(req, res){
 
 //TESTING ONLY ROUTES
 
-app.get('/imgAssoc', function(req, res){
+app.get('/img-assoc', function(req, res){
   var ImgAssoc = require('./assets/imgAssoc')
   var captcha = new ImgAssoc
 
@@ -96,18 +96,18 @@ app.get('/imgAssoc', function(req, res){
   });
 });
 
-app.get('/areaClick', function(req, res){
+app.get('/area-click', function(req, res){
   var areaClick = require('./assets/areaClick')
   var captcha = new areaClick
 
   req.session.gameKey = captcha.gameKey
 
-  res.render('clickArea', {
+  res.render('areaClick', {
     gameData: captcha.gameData
   });
 })
 
-app.get('/dragAndDrop', function(req, res){
+app.get('/drag-and-drop', function(req, res){
   var dragAndDrop = require('./assets/dragAndDrop')
   var captcha = new dragAndDrop();
 

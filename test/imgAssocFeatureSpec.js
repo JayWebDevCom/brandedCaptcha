@@ -8,15 +8,17 @@ describe('imgAssoc', function(){
   const browser = new Browser();
 
   beforeEach(function(done) {
-    browser.visit('http://localhost:8080/imgAssoc', done);
+    browser.visit('http://localhost:8080/img-assoc', done);
   });
 
-  it('should display an image with id mainImage', function(){
+  it('should display an image with id mainImage', function(done){
     browser.assert.element('img#mainImage')
+    done();
   });
 
-  it('should display 3 images on the page with class testImage', function(){
-    browser.assert.elements('input.testImage', 3)
+  it('should display 3 images on the page with class testImage', function(done){
+    browser.assert.elements('input.testImage', 3);
+    done();
   });
 
   it('visits /failed when clicking input 0', function(done){
@@ -28,14 +30,14 @@ describe('imgAssoc', function(){
 
   it('visits /failed when clicking input 1', function(done){
     browser.click('input#img1', function(){
-      browser.assert.url('/confirmed');
+      browser.assert.url('/failed');
       done();
     });
   });
 
   it('visits /confirmed when clicking input 2', function(done){
     browser.click('input#img2', function(){
-      browser.assert.url('/failed');
+      browser.assert.url('/confirmed');
       done();
     });
   });

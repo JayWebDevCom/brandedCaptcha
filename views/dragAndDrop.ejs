@@ -28,11 +28,11 @@
 
     <img src="../dragAndDrop/<%=gameData.img%>.jpg" id="main-image" width="400px" ondragover="allowDrop(event)" ondrop="drop(event)" class="mainImage">
 
-    <form id="main-image-form" action="/dragAndDrop" method="post">
+    <form id="main-image-form" action="/drag-and-drop" method="post">
     </form>
 
     <div id="prompt-images">
-      <img src="../dragAndDrop/<%=gameData.object%>.png" id="prompt-image0" width="100" ondragstart="drag(event)" draggable="true">
+      <img src="../dragAndDrop/<%= gameData.object %>.png" id="prompt-image0" width="100" ondragstart="drag(event)" draggable="true">
     </div>
 
   </body>

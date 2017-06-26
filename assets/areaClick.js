@@ -13,7 +13,7 @@ var solutions = [
 
 var ClickArea = function(stubNumber){
   var randomIndex = stubNumber || Math.floor(Math.random() * mains.length)
-  this.type = 'clickArea'
+  this.type = 'areaClick'
   this.gameKey = mains[randomIndex].id;
   this.gameData = mains[randomIndex];
 }
@@ -29,6 +29,6 @@ ClickArea.prototype.getSolution = function(answer){
     Number(answer[1].y) > solution.yLowLimit &&
     Number(answer[1].y) < solution.yHighLimit
   );
-}
+};
 
 module.exports = ClickArea;
