@@ -1,25 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title></title>
-
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="captchupFiles/loadModal.js"></script>
-
-</head>
+<% include header %>
 <body>
   <div id="dialog-message">
-    <h1 align="center"><%= gameData.prompt %></h1>
-
+    <h1 align="center"><%= gamedata.prompt %></h1>
     <form align="center" id="post-answer" method="post" action="/areaClick">
       <input width="400" type="image" id="logoArea" src="areaclick/<%= gameData.img %>">
     </form>
   </div>
-  <button id='refreshButton'>Please re-submit Captcha</button>
-  <script src="captchupFiles/refreshModal.js"></script>
+<% include footer %>
 </body>
 </html>
