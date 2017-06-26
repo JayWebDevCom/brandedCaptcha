@@ -5,18 +5,21 @@ var app = require('../index.js')
 var sinon = require('sinon')
 
 describe('imgAssoc', function(){
+  this.timeout(15000);
   const browser = new Browser();
 
   beforeEach(function(done) {
     browser.visit('http://localhost:8080/imgAssoc', done);
   });
 
-  it('should display an image with id mainImage', function(){
+  it('should display an image with id mainImage', function(done){
     browser.assert.element('img#mainImage')
+    done();
   });
 
-  it('should display 3 images on the page with class testImage', function(){
+  it('should display 3 images on the page with class testImage', function(done){
     browser.assert.elements('input.testImage', 3)
+    done();
   });
 
   it('visits /failed when clicking input 0', function(done){

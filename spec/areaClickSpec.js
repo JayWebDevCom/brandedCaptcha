@@ -8,7 +8,7 @@ describe('Clicking on an Area minigame', function(){
   })
 
   it('returns a solution key', function(){
-    expect(miniGame.gamekey).toEqual(204);
+    expect(miniGame.gameKey).toEqual(204);
   })
   it('accepts correct solution', function(){
     expect(miniGame.getSolution([201, { x: 140, y: 60}])).toBeTruthy();

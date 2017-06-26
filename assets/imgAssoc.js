@@ -9,7 +9,7 @@ var imgAssoc = function(){
   this.promptArray = this.getPromptArray(this.getMainImage(this.randomIndex).id);
   this.promptStrings = this.buildPromptStrings(this.promptArray);
 
-  this.gamekey = this.getMainImage(this.randomIndex).id
+  this.gameKey = this.getMainImage(this.randomIndex).id
 
   this.gameData = {
     mainString: this.buildMainImageString(this.getMainImage(this.randomIndex)),
@@ -69,10 +69,10 @@ imgAssoc.prototype.buildPromptStrings = function(array){
   return promptStrings
 };
 
-imgAssoc.prototype.checkAnswer = function(gamekey, name){
+imgAssoc.prototype.checkAnswer = function(gameKey, name){
 
   function findImage(hash) {
-    return gamekey === hash.id;
+    return gameKey === hash.id;
   };
 
   var returnedImage = solutions.find(findImage);

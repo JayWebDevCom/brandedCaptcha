@@ -14,7 +14,7 @@ var solutions = [
 var ClickArea = function(stubNumber){
   var randomIndex = stubNumber || Math.floor(Math.random() * mains.length)
   this.type = 'clickArea'
-  this.gamekey = mains[randomIndex].id;
+  this.gameKey = mains[randomIndex].id;
   this.gameData = mains[randomIndex];
 }
 
