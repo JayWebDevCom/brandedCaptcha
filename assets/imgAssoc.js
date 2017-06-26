@@ -8,7 +8,7 @@ var imgAssoc = function(stubNumber){
 
   this.type = 'imgAssoc'
   this.gameKey = mainImage.id
-  this.promptStrings = this.getPromptArray(mainImage.id)
+  this.promptStrings = this.newPromptArray(mainImage.id)
 
   this.gameData = {
     mainString: mainImage.img,
@@ -16,18 +16,30 @@ var imgAssoc = function(stubNumber){
   };
 };
 
-imgAssoc.prototype.getPromptArray = function(mainImageid){
+imgAssoc.prototype.newPromptArray = function(mainImageId){
+
+  var decoy1 = decoys[Math.floor(Math.random() * decoys.length)].img
+  var decoy2 = decoys[Math.floor(Math.random() * decoys.length)].img
+
+  var getDecoy2 = function(){
+    while(decoy1 == decoy2){ decoy2 = decoys[Math.floor(Math.random() * decoys.length)].img }
+    return decoy2
+  };
+
+  newPromptArray = []
+  newPromptArray.push(decoy1)
+  newPromptArray.push(getDecoy2())
+  newPromptArray.push(this.getSolution(mainImageId).img)
+
   function shuffle(array) {
     for (let i = array.length; i; i--) {
         let j = Math.floor(Math.random() * i);
         [array[i - 1], array[j]] = [array[j], array[i - 1]];
     };
   };
-  var promptArray = [];
-  for(i = 0; i<2; i++){ promptArray.push(decoys[Math.floor(Math.random() * decoys.length)].img)};
-  promptArray.push(this.getSolution(mainImageid).img);
-  shuffle(promptArray);
-  return promptArray;
+
+  shuffle(newPromptArray)
+  return newPromptArray
 };
 
 imgAssoc.prototype.getSolution = function(mainImageid){
