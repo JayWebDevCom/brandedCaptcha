@@ -1,8 +1,28 @@
-var mains = [{id:300, img:'cisse'}, {id:301, img:'ronaldo'}, {id:302, img:'murray'}, {id:303, img:'rangeRover'}, {id:304, img:'lufthansaPlane'}]
-var solutions = [{id:300, img:'adidasBoots'}, {id:301, img:'nikeBoots'}, {id:302, img:'headRacket'}, {id:303, img:'rangeRoverCar'}, {id:304, img:'lufthansaLogo'}]
-var decoys = [{id:000, img:'dog'}, {id:001, img:'duck'}, {id:002, img:'mug'}, {id:003, img:'pen'}, {id:004, img:'plate'}]
+var mains = [
+  {id:300, img:'cisse'},
+  {id:301, img:'ronaldo'},
+  {id:302, img:'murray'},
+  {id:303, img:'rangeRover'},
+  {id:304, img:'lufthansaPlane'}
+]
 
-var imgAssoc = function(stubNumber){
+var solutions = [
+  {id:300, img:'adidasBoots'},
+  {id:301, img:'nikeBoots'},
+  {id:302, img:'headRacket'},
+  {id:303, img:'rangeRoverCar'},
+  {id:304, img:'lufthansaLogo'}
+]
+
+var decoys = [
+  {id:000, img:'dog'},
+  {id:001, img:'duck'},
+  {id:002, img:'mug'},
+  {id:003, img:'pen'},
+  {id:004, img:'plate'}
+]
+
+var ImgAssoc = function(stubNumber){
   var randomIndex = stubNumber || Math.floor(Math.random() * mains.length)
   var mainImage = mains[randomIndex]
 
@@ -16,7 +36,7 @@ var imgAssoc = function(stubNumber){
   };
 };
 
-imgAssoc.prototype.newPromptArray = function(mainImageId){
+ImgAssoc.prototype.newPromptArray = function(mainImageId){
 
   var decoy1 = decoys[Math.floor(Math.random() * decoys.length)].img
   var decoy2 = decoys[Math.floor(Math.random() * decoys.length)].img
@@ -42,14 +62,14 @@ imgAssoc.prototype.newPromptArray = function(mainImageId){
   return newPromptArray
 };
 
-imgAssoc.prototype.getSolution = function(mainImageid){
+ImgAssoc.prototype.getSolution = function(mainImageid){
   function findSolution(hash) {
     return hash.id === mainImageid;
   };
   return solutions.find(findSolution);
 };
 
-imgAssoc.prototype.checkAnswer = function(gameKey, name){
+ImgAssoc.prototype.checkAnswer = function(gameKey, name){
   function findImage(hash) {
     return gameKey === hash.id;
   };
@@ -57,4 +77,4 @@ imgAssoc.prototype.checkAnswer = function(gameKey, name){
   return returnedImage.img === name
 }
 
-module.exports = imgAssoc;
+module.exports = ImgAssoc;
