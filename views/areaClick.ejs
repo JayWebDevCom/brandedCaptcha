@@ -8,18 +8,18 @@
 
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="captchupFiles/loadModal.js"></script>
+  <script src="../captchupFiles/loadModal.js"></script>
 
 </head>
 <body>
   <div id="dialog-message">
     <h1 align="center"><%= gameData.prompt %></h1>
 
-    <form align="center" id="post-answer" method="post" action="/areaClick">
-      <input width="400" type="image" id="logoArea" src="areaclick/<%= gameData.img %>">
+    <form align="center" id="post-answer" method="post" action="/area-click">
+      <input width="400" type="image" id="logoArea" src="../areaClick/<%= gameData.img %>">
     </form>
   </div>
   <button id='refreshButton'>Please re-submit Captcha</button>
-  <script src="captchupFiles/refreshModal.js"></script>
+  <script src="c../aptchupFiles/refreshModal.js"></script>
 </body>
 </html>
