@@ -127,6 +127,7 @@ app.get('/test', function(req, res) {
 
 app.post('/test', function(req, res) {
   res.render('welcome', {
-   name: req.body.name  
+   first_name: req.body.first_name,
+   last_name: req.body.last_name
   })
 })
