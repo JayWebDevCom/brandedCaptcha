@@ -120,3 +120,7 @@ app.get('/drag-and-drop', function(req, res){
 
 var modalRoutes = require('./routes/modalRoutes')
 app.use('/modal', modalRoutes.index);
+
+app.get('/test', function(req, res) {
+  res.render('testpage', {})
+})
