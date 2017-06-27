@@ -124,3 +124,9 @@ app.use('/modal', modalRoutes.index);
 app.get('/test', function(req, res) {
   res.render('testpage', {})
 })
+
+app.post('/test', function(req, res) {
+  res.render('welcome', {
+   name: req.body.name  
+  })
+})
