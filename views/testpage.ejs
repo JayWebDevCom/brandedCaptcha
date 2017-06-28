@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>CaptchUp API Test</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="captchupFiles/captchup.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="captchupFiles/captchup.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
   </head>
@@ -57,7 +57,7 @@
     <div id="captchup"></div>
 
     <div class="container">
-          <div class="row centered-form">
+          <div class="row centered-form required">
           <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
           	<div class="panel panel-default">
           		<div class="panel-heading">
@@ -67,30 +67,30 @@
                 <form method="post" action="/test" id="captchupForm">
   			    			<div class="row">
   			    				<div class="col-xs-6 col-sm-6 col-md-6">
-  			    					<div class="form-group">
-  			                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+  			    					<div class="form-group required">
+  			                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name" required="required">
   			    					</div>
   			    				</div>
   			    				<div class="col-xs-6 col-sm-6 col-md-6">
-  			    					<div class="form-group">
-  			    						<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+  			    					<div class="form-group required">
+  			    						<input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name" required="required">
   			    					</div>
   			    				</div>
   			    			</div>
 
-  			    			<div class="form-group">
-  			    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+  			    			<div class="form-group required">
+  			    				<input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address" required="required">
   			    			</div>
 
   			    			<div class="row">
   			    				<div class="col-xs-6 col-sm-6 col-md-6">
-  			    					<div class="form-group">
-  			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+  			    					<div class="form-group required">
+  			    						<input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required="required">
   			    					</div>
   			    				</div>
   			    				<div class="col-xs-6 col-sm-6 col-md-6">
-  			    					<div class="form-group">
-  			    						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+  			    					<div class="form-group required">
+  			    						<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password" required="required">
   			    					</div>
   			    				</div>
   			    			</div>
