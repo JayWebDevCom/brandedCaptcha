@@ -118,13 +118,14 @@ app.get('/drag-and-drop', function(req, res){
   });
 })
 
-var modalRoutes = require('./routes/modalRoutes')
-app.use('/modal', modalRoutes.index);
 
+// this is the route with user signup - success
 app.get('/test', function(req, res) {
   res.render('testpage', {})
 })
 
+
+// this is the route with user signup - fill in details
 app.post('/test', function(req, res) {
   res.render('welcome', {
    first_name: req.body.first_name,
