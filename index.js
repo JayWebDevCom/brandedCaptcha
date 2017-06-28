@@ -131,3 +131,18 @@ app.post('/test', function(req, res) {
    last_name: req.body.last_name
   })
 })
+
+app.get('/arCl', function(req, res){
+  res.render('arCl', {})
+})
+
+app.get('/newarea', function(req, res){
+  clickArea = require('./assets/areaClick.js');
+  captcha = new clickArea();
+  string = '<img src="' + captcha.gameData.img + '">'
+  // '<h1 align="center">This is area click game</h1>'+
+  // '<form align="center" id="post-answer" method="post" action="">'+
+  // '<input width="400" type="image" id="logoArea" src="<%= captcha.gameData.img %>">'+
+  // '</form>'
+  res.send(string)
+})

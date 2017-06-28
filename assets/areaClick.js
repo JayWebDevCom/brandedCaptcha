@@ -1,8 +1,8 @@
 var mains = [
-  { id: 201, img:'CocaCola.jpg', prompt: 'Click the Coke Label' },
-  { id: 204, img: 'wwe2k18.jpg', prompt: 'Click on the number eight' },
-  { id: 202, img:'google.jpg', prompt: 'Click the Orange Letter' },
-  { id: 203, img: 'jordan_dunk.jpg', prompt: 'Click on Michael Jordan\'s Armband'}
+  { id: 201, img:'http://i.imgur.com/4AehZVQ.jpg', prompt: 'Click the Coke Label' },
+  { id: 204, img: 'http://i.imgur.com/QyU5v2N.jpg', prompt: 'Click on the number eight' },
+  { id: 202, img:'http://i.imgur.com/Nz68cPK.jpg', prompt: 'Click the Orange Letter' },
+  { id: 203, img: 'http://i.imgur.com/HoBl8Mq.jpg', prompt: 'Click on Michael Jordan\'s Armband'}
 ]
 var solutions = [
   { id: 201, xLowLimit: 138, xHighLimit: 181, yLowLimit: 57, yHighLimit: 125 },
